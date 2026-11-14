@@ -1,0 +1,7 @@
+# Datos confidenciales (memorando ati-199-2026)
+data/raw/
+data/dw/
+*.xlsx
+*.db
+__pycache__/
+.venv/
