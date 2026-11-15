@@ -1,0 +1,30 @@
+flowchart TB
+    subgraph IMPLEMENTADAS["Dimensiones implementadas - Alexandra Pamela Cruz Segura"]
+      DT["dim_tiempo<br/>PK id_tiempo<br/>anio"]
+      DG["dim_geografia<br/>PK id_geografia<br/>zona_residencia · region_planificacion<br/>provincia · canton · distrito<br/>nivel_desarrollo_social · zona_gam"]
+      DC["dim_colegio<br/>PK id_colegio<br/>modalidad · tipo_financiamiento"]
+    end
+
+    subgraph PENDIENTES["Dimensiones Angelica Granados Rivera — diseño aprobado]
+      DO["dim_opcion<br/>PK id_opcion<br/>opcion"]
+      DP["dim_perfil_estudiante<br/>PK id_perfil_estudiante<br/>rango_edad · nacionalidad<br/>tipo_estudiante · tipo_diploma_secundaria"]
+      DF["dim_forma_ingreso<br/>PK id_forma_ingreso<br/>forma_ingreso"]
+      DR["dim_rango_nota<br/>PK id_rango_nota<br/>rango_nota"]
+    end
+
+    FS[("fact_solicitudes<br/>PK id_solicitud<br/>FK id_tiempo · id_geografia · id_colegio<br/>FK lógica id_opcion · id_perfil_estudiante<br/>id_forma_ingreso · id_rango_nota<br/>Medidas: cantidad_solicitudes,<br/>nota_admision, nota_iv_ciclo<br/>Trazabilidad: hoja_origen, fila_origen")]
+
+    DT -->|"1 : N"| FS
+    DG -->|"1 : N"| FS
+    DC -->|"1 : N"| FS
+    DO -.->|"1 : N · FK pendiente"| FS
+    DP -.->|"1 : N · FK pendiente"| FS
+    DF -.->|"1 : N · FK pendiente"| FS
+    DR -.->|"1 : N · FK pendiente"| FS
+
+    classDef implemented fill:#e8f3ed,stroke:#32845b,color:#163d2b;
+    classDef pending fill:#fff4dc,stroke:#b88725,color:#5a4211,stroke-dasharray: 5 5;
+    classDef fact fill:#e9effa,stroke:#4169a1,color:#172d4d;
+    class DT,DG,DC implemented;
+    class DO,DP,DF,DR pending;
+    class FS fact;

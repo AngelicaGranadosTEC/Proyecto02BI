@@ -1,0 +1,12 @@
+Para evitar incompatibilidades entre el componente de solicitudes y el de admisiones, preparé una propuesta de contrato dimensional basada en el mapeo del informe del Proyecto 02.
+
+Mi parte (Persona 3) ya tiene creadas y verificadas en PostgreSQL `dim_tiempo`, `dim_geografia`, `dim_colegio` y `fact_solicitudes`. La propuesta contempla que tu componente valide y defina `dim_opcion`, `dim_perfil_estudiante`, `dim_forma_ingreso`, `dim_rango_nota` y `fact_admisiones`.
+
+Las estructuras de esas cuatro dimensiones son únicamente propuestas iniciales basadas en la matriz del informe; no las considero aprobadas ni implementadas por mi parte. Me gustaría que revisemos:
+1. Los atributos y la granularidad de cada dimensión.
+2. Los nombres y tipos de las llaves primarias.
+3. Qué dimensiones utilizará `fact_admisiones`.
+4. Las cuatro llaves foráneas que necesitaría agregar `fact_solicitudes`.
+5. El tratamiento de “No especificado”, “No aplica” y categorías de notas.
+
+Te comparto el contrato v1.0 como base para coordinarnos y respetar la división de tareas.
