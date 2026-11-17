@@ -4,3 +4,5 @@ data/dw/
 *.db
 __pycache__/
 .venv/
+salidas/consistencia_agregada_*.csv
+salidas/razon_agregada_*.csv
