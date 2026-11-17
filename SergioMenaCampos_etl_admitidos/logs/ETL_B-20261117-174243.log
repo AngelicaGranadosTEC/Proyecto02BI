@@ -1,0 +1,36 @@
+2026-11-17 17:42:43,570 | INFO    | Inicio del lote ETL_B-20261117-174243 · fuente=Datos proyecto BI v2.xlsx · destino=SQLite (data/dw/dw_ati.db)
+2026-11-17 17:42:43,740 | INFO    | 1. Extracción (2 hojas de admitidos)   filas=742    estado=OK {'Admitidos primera opción': 659, 'Admitidos segunda opción': 83}
+2026-11-17 17:42:43,741 | INFO    | [VO-01] OK          Estructura de columnas · Admitidos primera opción | esperado=18 columnas esperadas obtenido=completa 
+2026-11-17 17:42:43,742 | INFO    | [VO-01] OK          Estructura de columnas · Admitidos segunda opción | esperado=18 columnas esperadas obtenido=completa 
+2026-11-17 17:42:43,743 | INFO    | [VO-02] OK          Dominio del año (2020-2026) | esperado=0 obtenido=0 
+2026-11-17 17:42:43,753 | INFO    | [VO-03] OK          Celdas vacías en columnas de origen | esperado=0 obtenido=0 
+2026-11-17 17:42:43,754 | INFO    | [VO-04] OK          Filas idénticas dentro de una misma hoja | esperado=0 obtenido=0 Se conservan: sin identificador no se puede probar duplicación real
+2026-11-17 17:42:43,755 | INFO    | 2. Validación de origen                filas=742    estado=OK 
+2026-11-17 17:42:43,818 | INFO    | 3. Transformación (RT-B01..RT-B08)     filas=742    estado=OK columnas excluidas por sensibilidad: ['Solicitud de Adecuación']
+2026-11-17 17:42:43,819 | INFO    | [VT-01] OK          Formas de ingreso homologadas contra catálogo | esperado=0 obtenido=0 
+2026-11-17 17:42:43,819 | INFO    | [VT-02] OK          Nota numérica dentro del rango de nota registrado | esperado=0 obtenido=0 
+2026-11-17 17:42:43,820 | INFO    | [VT-03] OK          Exención <=> nota 'No aplica' (coherencia forma-nota) | esperado=0 obtenido=0 
+2026-11-17 17:42:43,821 | INFO    | [VT-04] OK          Nota 'No aplica' <=> rango 'No aplica' | esperado=0 obtenido=0 
+2026-11-17 17:42:43,821 | INFO    | [VT-05] OK          Rangos de edad reconocidos por el catálogo | esperado=0 obtenido=0 
+2026-11-17 17:42:43,851 | INFO    | 4. Carga de dimensiones                filas=300    estado=OK miembros nuevos: {'dim_tiempo': 7, 'dim_geografia': 237, 'dim_colegio': 20, 'dim_opcion': 2, 'dim_forma_ingreso': 4, 'dim_rango_nota': 7, 'dim_perfil_estudiante': 23}
+2026-11-17 17:42:43,851 | INFO    | 5. Carga de fact_admisiones            filas=742    estado=OK filas reemplazadas de lotes previos: 0
+2026-11-17 17:42:43,851 | INFO    | [VC-01] OK          Conteo origen = conteo cargado · Admitidos primera opción | esperado=659 obtenido=659 
+2026-11-17 17:42:43,851 | INFO    | [VC-01] OK          Conteo origen = conteo cargado · Admitidos segunda opción | esperado=83 obtenido=83 
+2026-11-17 17:42:43,851 | INFO    | [VC-02] OK          Total cargado en fact_admisiones | esperado=742 obtenido=742 
+2026-11-17 17:42:43,851 | INFO    | [VC-03] OK          Sin duplicados por fila de origen | esperado=0 obtenido=0 
+2026-11-17 17:42:43,852 | INFO    | [VC-04] OK          Integridad referencial: hechos sin dimensión (7 llaves) | esperado=0 obtenido=0 
+2026-11-17 17:42:43,853 | INFO    | [VC-05] OK          Distribución por año conservada (origen vs. modelo) | esperado={2020: 116, 2021: 97, 2022: 107, 2023: 90, 2024: 103, 2025: 110, 2026: 119} obtenido={2020: 116, 2021: 97, 2022: 107, 2023: 90, 2024: 103, 2025: 110, 2026: 119} 
+2026-11-17 17:42:43,853 | INFO    | [VC-06] OK          Notas válidas cargadas (criterio K06) y su promedio | esperado=informativo obtenido=656 notas, promedio 658.64 
+2026-11-17 17:42:43,853 | INFO    | 6. Validaciones posteriores            filas=-      estado=OK 
+2026-11-17 17:42:44,538 | INFO    | [CA-01] OK          Admitidos <= solicitantes por año y opción | esperado=0 obtenido=0 
+2026-11-17 17:42:44,538 | INFO    | [CA-02] OK          Años con admitidos tienen solicitantes en la misma opción | esperado=0 obtenido=0 
+2026-11-17 17:42:44,541 | WARNING | [CA-03] ADVERTENCIA Contención agregada por Forma de ingreso | esperado=0 de 26 celdas obtenido=4 de 26 celdas Inconsistencia de la fuente: se documenta, no se corrige
+2026-11-17 17:42:44,545 | WARNING | [CA-03] ADVERTENCIA Contención agregada por Rango de nota | esperado=0 de 54 celdas obtenido=18 de 54 celdas Inconsistencia de la fuente: se documenta, no se corrige
+2026-11-17 17:42:44,547 | INFO    | [CA-03] OK          Contención agregada por Condición académica | esperado=0 de 19 celdas obtenido=0 de 19 celdas Inconsistencia de la fuente: se documenta, no se corrige
+2026-11-17 17:42:44,549 | WARNING | [CA-03] ADVERTENCIA Contención agregada por Nacionalidad | esperado=0 de 17 celdas obtenido=4 de 17 celdas Inconsistencia de la fuente: se documenta, no se corrige
+2026-11-17 17:42:44,552 | INFO    | [CA-03] OK          Contención agregada por Provincia | esperado=0 de 63 celdas obtenido=0 de 63 celdas Inconsistencia de la fuente: se documenta, no se corrige
+2026-11-17 17:42:44,554 | WARNING | [CA-03] ADVERTENCIA Contención agregada por Modalidad del colegio | esperado=0 de 72 celdas obtenido=3 de 72 celdas Inconsistencia de la fuente: se documenta, no se corrige
+2026-11-17 17:42:44,556 | INFO    | [CA-03] OK          Contención agregada por Financiamiento del colegio | esperado=0 de 32 celdas obtenido=0 de 32 celdas Inconsistencia de la fuente: se documenta, no se corrige
+2026-11-17 17:42:44,558 | INFO    | [CA-03] OK          Contención agregada por Zona GAM | esperado=0 de 19 celdas obtenido=0 de 19 celdas Inconsistencia de la fuente: se documenta, no se corrige
+2026-11-17 17:42:44,563 | INFO    | 7. Consistencia agregada con solicitantes filas=29     estado=OK celdas con admitidos > solicitantes (ver CSV)
+2026-11-17 17:42:44,564 | INFO    | Fin del lote ETL_B-20261117-174243 · validaciones: {'OK': 23, 'ADVERTENCIA': 4}

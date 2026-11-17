@@ -1,0 +1,56 @@
+// =====================================================================
+// Página 6 · Pregunta exploratoria PN5 · Medidas propias (Persona 6)
+// Requiere que fact_solicitudes y fact_admisiones se relacionen con las
+// dimensiones conformadas dim_tiempo, dim_opcion, dim_forma_ingreso y
+// dim_perfil_estudiante. Ninguna medida relaciona registros individuales.
+// =====================================================================
+
+// Medidas base (si el grupo ya las tiene en la página 1, reutilizar esas)
+Admisiones = SUM ( fact_admisiones[cantidad_admisiones] )
+Solicitudes = SUM ( fact_solicitudes[cantidad_solicitudes] )
+
+// K09 · Participación de admisiones por otras vías
+K09 % Admisiones por otra vía =
+DIVIDE (
+    CALCULATE ( [Admisiones], dim_forma_ingreso[tipo_via] = "Otra vía" ),
+    [Admisiones]
+)
+
+// Composición por forma de ingreso (apoyo para K10)
+% Admisiones por forma =
+DIVIDE ( [Admisiones], CALCULATE ( [Admisiones], ALL ( dim_forma_ingreso ) ) )
+
+% Solicitudes por forma =
+DIVIDE ( [Solicitudes], CALCULATE ( [Solicitudes], ALL ( dim_forma_ingreso ) ) )
+
+// K10 · Brecha de composición admitidos - solicitantes (puntos porcentuales)
+K10 Brecha de composición (pp) =
+( [% Admisiones por forma] - [% Solicitudes por forma] ) * 100
+
+// K11 · Razón agregada admitidos / solicitudes
+// Solo suma las combinaciones año-opción donde AMBAS hojas tienen registros:
+// un año sin datos no se trata como cero. No es una tasa de conversión individual.
+K11 Razón agregada adm/sol =
+VAR Celdas =
+    ADDCOLUMNS (
+        CROSSJOIN ( VALUES ( dim_tiempo[anio] ), VALUES ( dim_opcion[opcion] ) ),
+        "@sol", [Solicitudes],
+        "@adm", [Admisiones]
+    )
+VAR Comparables = FILTER ( Celdas, [@sol] > 0 && [@adm] > 0 )
+RETURN
+    DIVIDE ( SUMX ( Comparables, [@adm] ), SUMX ( Comparables, [@sol] ) )
+
+// K12 · Personas graduadas admitidas por otras vías
+K12 % Graduados admitidos por otra vía =
+DIVIDE (
+    CALCULATE (
+        [Admisiones],
+        dim_forma_ingreso[tipo_via] = "Otra vía",
+        dim_perfil_estudiante[condicion_academica] = "Graduado de secundaria"
+    ),
+    CALCULATE (
+        [Admisiones],
+        dim_perfil_estudiante[condicion_academica] = "Graduado de secundaria"
+    )
+)

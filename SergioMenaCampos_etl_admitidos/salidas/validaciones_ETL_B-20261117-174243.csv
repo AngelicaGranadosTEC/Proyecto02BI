@@ -1,0 +1,28 @@
+﻿id_lote,componente,codigo,prueba,esperado,obtenido,estado,detalle
+ETL_B-20261117-174243,ETL_B,VO-01,Estructura de columnas · Admitidos primera opción,18 columnas esperadas,completa,OK,
+ETL_B-20261117-174243,ETL_B,VO-01,Estructura de columnas · Admitidos segunda opción,18 columnas esperadas,completa,OK,
+ETL_B-20261117-174243,ETL_B,VO-02,Dominio del año (2020-2026),0,0,OK,
+ETL_B-20261117-174243,ETL_B,VO-03,Celdas vacías en columnas de origen,0,0,OK,
+ETL_B-20261117-174243,ETL_B,VO-04,Filas idénticas dentro de una misma hoja,0,0,OK,Se conservan: sin identificador no se puede probar duplicación real
+ETL_B-20261117-174243,ETL_B,VT-01,Formas de ingreso homologadas contra catálogo,0,0,OK,
+ETL_B-20261117-174243,ETL_B,VT-02,Nota numérica dentro del rango de nota registrado,0,0,OK,
+ETL_B-20261117-174243,ETL_B,VT-03,Exención <=> nota 'No aplica' (coherencia forma-nota),0,0,OK,
+ETL_B-20261117-174243,ETL_B,VT-04,Nota 'No aplica' <=> rango 'No aplica',0,0,OK,
+ETL_B-20261117-174243,ETL_B,VT-05,Rangos de edad reconocidos por el catálogo,0,0,OK,
+ETL_B-20261117-174243,ETL_B,VC-01,Conteo origen = conteo cargado · Admitidos primera opción,659,659,OK,
+ETL_B-20261117-174243,ETL_B,VC-01,Conteo origen = conteo cargado · Admitidos segunda opción,83,83,OK,
+ETL_B-20261117-174243,ETL_B,VC-02,Total cargado en fact_admisiones,742,742,OK,
+ETL_B-20261117-174243,ETL_B,VC-03,Sin duplicados por fila de origen,0,0,OK,
+ETL_B-20261117-174243,ETL_B,VC-04,Integridad referencial: hechos sin dimensión (7 llaves),0,0,OK,
+ETL_B-20261117-174243,ETL_B,VC-05,Distribución por año conservada (origen vs. modelo),"{2020: 116, 2021: 97, 2022: 107, 2023: 90, 2024: 103, 2025: 110, 2026: 119}","{2020: 116, 2021: 97, 2022: 107, 2023: 90, 2024: 103, 2025: 110, 2026: 119}",OK,
+ETL_B-20261117-174243,ETL_B,VC-06,Notas válidas cargadas (criterio K06) y su promedio,informativo,"656 notas, promedio 658.64",OK,
+ETL_B-20261117-174243,ETL_B,CA-01,Admitidos <= solicitantes por año y opción,0,0,OK,
+ETL_B-20261117-174243,ETL_B,CA-02,Años con admitidos tienen solicitantes en la misma opción,0,0,OK,
+ETL_B-20261117-174243,ETL_B,CA-03,Contención agregada por Forma de ingreso,0 de 26 celdas,4 de 26 celdas,ADVERTENCIA,"Inconsistencia de la fuente: se documenta, no se corrige"
+ETL_B-20261117-174243,ETL_B,CA-03,Contención agregada por Rango de nota,0 de 54 celdas,18 de 54 celdas,ADVERTENCIA,"Inconsistencia de la fuente: se documenta, no se corrige"
+ETL_B-20261117-174243,ETL_B,CA-03,Contención agregada por Condición académica,0 de 19 celdas,0 de 19 celdas,OK,"Inconsistencia de la fuente: se documenta, no se corrige"
+ETL_B-20261117-174243,ETL_B,CA-03,Contención agregada por Nacionalidad,0 de 17 celdas,4 de 17 celdas,ADVERTENCIA,"Inconsistencia de la fuente: se documenta, no se corrige"
+ETL_B-20261117-174243,ETL_B,CA-03,Contención agregada por Provincia,0 de 63 celdas,0 de 63 celdas,OK,"Inconsistencia de la fuente: se documenta, no se corrige"
+ETL_B-20261117-174243,ETL_B,CA-03,Contención agregada por Modalidad del colegio,0 de 72 celdas,3 de 72 celdas,ADVERTENCIA,"Inconsistencia de la fuente: se documenta, no se corrige"
+ETL_B-20261117-174243,ETL_B,CA-03,Contención agregada por Financiamiento del colegio,0 de 32 celdas,0 de 32 celdas,OK,"Inconsistencia de la fuente: se documenta, no se corrige"
+ETL_B-20261117-174243,ETL_B,CA-03,Contención agregada por Zona GAM,0 de 19 celdas,0 de 19 celdas,OK,"Inconsistencia de la fuente: se documenta, no se corrige"
