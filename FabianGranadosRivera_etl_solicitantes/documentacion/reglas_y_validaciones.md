@@ -27,8 +27,30 @@ Fuente: `Datos proyecto BI v2.xlsx`, hojas `Solicitantes primera opción` (2.725
 - Nota de admisión con valor cero: **636 registros**. Nota de admisión no numérica o categórica: **166 registros**. Ambos grupos se conservan para conteos.
 - Prueba de integración con el ETL B en la misma SQLite: completó su carga y reportó cuatro advertencias de consistencia agregada en los datos; no alteramos los valores originales.
 
+## Validación adicional en PostgreSQL local (19 de noviembre de 2026)
+Se creó una base de pruebas **local** `dw_proyecto02_bi_tec` y se aplicaron los SQL del repositorio en este orden:
+1. `AlexandraPamelaCruzSegura_modelo_solicitudes/sql/01_crear_modelo_v1.sql`.
+2. `SergioMenaCampos_etl_admitidos/sql/postgresql/ddl_componente_b.sql`.
+3. `AlexandraPamelaCruzSegura_modelo_solicitudes/sql/02_ajustar_fact_solicitudes_integracion_v2.sql`.
+
+Se ejecutó el ETL A con conexión PostgreSQL y `Datos proyecto BI v2.xlsx`. La bitácora reportó 4.854 registros insertados (2.725 de primera opción y 2.129 de segunda), 12 validaciones OK y ninguna excepción. Se identificaron 636 notas de admisión con valor cero y 166 notas no numéricas; estas se conservaron como registros y se trataron según las reglas documentadas. Posteriormente se ejecutaron consultas directas en pgAdmin para verificar los recuentos:
+
+| Tabla | Registros |
+|---|---:|
+| `bi.fact_solicitudes` | 4.854 |
+| `bi.dim_tiempo` | 7 |
+| `bi.dim_geografia` | 445 |
+| `bi.dim_colegio` | 24 |
+| `bi.dim_opcion` | 2 |
+| `bi.dim_perfil_estudiante` | 58 |
+| `bi.dim_forma_ingreso` | 4 |
+| `bi.dim_rango_nota` | 11 |
+
+Evidencia visual: `evidencias/postgres_fact_solicitudes_4854.png` y `evidencias/postgres_siete_dimensiones.png`. Estas capturas contienen únicamente consultas y resultados, no credenciales de conexión.
+
 ## Alcance de las pruebas y pendientes
-- SQLite fue probado, pero **no se ejecutó en la instancia PostgreSQL real** del grupo: confirmar instalación y estructura v2 antes de la ejecución integrada.
+- **Completado:** SQLite local, repetición en SQLite sin duplicar hechos, carga y conteos en PostgreSQL local usando los SQL de integración.
+- **Pendiente:** prueba de reejecución en PostgreSQL y prueba integrada con el ETL B de Sergio en la **misma instancia PostgreSQL**. La integración con ETL B se probó previamente en SQLite; no confundir ambas verificaciones.
 - El dashboard (página 5) y sus medidas de Power BI se realizarán después.
 - Los resultados de validación pertenecen al Excel recibido; si el equipo cambió de fuente, repetir pruebas.
 - No publicar el Excel ni la base local en un repositorio público sin autorización de la Escuela.

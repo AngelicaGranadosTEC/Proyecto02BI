@@ -64,3 +64,6 @@ Las dos hojas tienen, en la fuente oficial: primera opción = **2.725** filas; s
 - `documentacion/reglas_y_validaciones.md`: mapeos, reglas, resultados y límites.
 - `tests/prueba_reejecucion.py`: prueba automática local.
 - `logs/` y `salidas/` se crean al ejecutar, no se versionan automáticamente.
+
+## Evidencia de carga en PostgreSQL local (19/11/2026)
+Con los tres scripts SQL del modelo ya aplicados, se ejecutó ETL A con PostgreSQL local y la fuente v2. El proceso reportó **4.854 hechos**, **12 validaciones OK** y no se observaron errores. Las consultas directas confirmaron **4.854 registros en `bi.fact_solicitudes`** y las **siete dimensiones pobladas**. Consultar `documentacion/reglas_y_validaciones.md` y los PNG de `evidencias/`. Esto no equivale a una prueba de integración PostgreSQL con ETL B ni a validación de reejecución sobre PostgreSQL.
