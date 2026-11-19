@@ -1,0 +1,20 @@
+﻿Campo,Tipo inferido,Descripción del dato,Disponibilidad
+Año,Entero,Año del registro de solicitud o admisión.,Las cuatro hojas
+Modalidad del Colegio,Categórico,Modalidad educativa del colegio de procedencia.,Las cuatro hojas
+Tipo de Financiamiento del Colegio,Categórico,Clasificación del financiamiento del colegio de procedencia.,Las cuatro hojas
+Zona de Residencia,Categórico,Clasificación urbana/rural u otra categoría registrada de residencia.,Las cuatro hojas
+Región de Planificación,Categórico,Región territorial de planificación registrada.,Las cuatro hojas
+Provincia de Procedencia,Categórico,Provincia registrada como procedencia del registro.,Las cuatro hojas
+Cantón de Procedencia,Categórico,Cantón registrado de procedencia.,Las cuatro hojas
+Distrito de Procedencia,Categórico,Distrito registrado de procedencia.,Las cuatro hojas
+Nivel de Desarrollo Social,Categórico,Nivel categorizado de desarrollo social del territorio.,Las cuatro hojas
+Zona GAM,Categórico,Indicador de pertenencia a la Gran Área Metropolitana.,Las cuatro hojas
+Rango de Edad,Categórico,Grupo de edades informado por la fuente.,Las cuatro hojas
+Forma de Ingreso,Categórico,Modalidad de ingreso registrada.,Las cuatro hojas
+Nota de Admisión,Texto numérico / categoría,"Puntaje de admisión, o texto No Aplica / No Especificado cuando corresponda.",Las cuatro hojas
+Nota de IV Ciclo,Texto numérico / categoría,"Nota de IV Ciclo, presente únicamente en las hojas de solicitantes.",Solo solicitantes
+Rango de Nota de Admisión,Categórico,Intervalo de puntaje de admisión asignado por la fuente.,Las cuatro hojas
+Nacionalidad,Categórico,Categoría de nacionalidad registrada.,Las cuatro hojas
+Tipo de Estudiante,Categórico,Clasificación institucional del tipo de estudiante.,Las cuatro hojas
+Solicitud de Adecuación,Categórico sensible,Indica una condición de solicitud de adecuación registrada en la fuente.,Las cuatro hojas
+Tipo de Diploma de Secundaria,Categórico,Clasificación del diploma de secundaria reportado.,Las cuatro hojas
