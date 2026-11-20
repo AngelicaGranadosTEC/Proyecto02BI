@@ -1,0 +1,38 @@
+-- MEDIDAS UTILIZADAS PARA LA PÁGINA 02
+-- Copiar cada definición por separado mediante Modelado > Nueva medida
+-- Las medidas siguientes dependen de las dimensiones y tablas cargadas por el ETL
+
+-- En fact_solicitudes:
+K01 Solicitudes primera opcion =
+CALCULATE(
+    SUM(fact_solicitudes[cantidad_solicitudes]),
+    dim_opcion[codigo_opcion] = 1
+)
+
+K02 Solicitudes segunda opcion =
+CALCULATE(
+    SUM(fact_solicitudes[cantidad_solicitudes]),
+    dim_opcion[codigo_opcion] = 2
+)
+
+Total registros solicitudes =
+SUM(fact_solicitudes[cantidad_solicitudes])
+
+-- En fact_admisiones:
+Admisiones primera opcion =
+CALCULATE(
+    SUM(fact_admisiones[cantidad_admisiones]),
+    dim_opcion[codigo_opcion] = 1
+)
+
+Admisiones segunda opcion =
+CALCULATE(
+    SUM(fact_admisiones[cantidad_admisiones]),
+    dim_opcion[codigo_opcion] = 2
+)
+
+Total registros admisiones =
+SUM(fact_admisiones[cantidad_admisiones])
+
+-- IMPORTANTE: no convertir BLANK a 0 para combinaciones de año/opción sin registros.
+-- Las medidas de texto no deben usarse para cálculo ni gráficos numéricos.
