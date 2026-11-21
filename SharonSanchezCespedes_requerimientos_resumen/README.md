@@ -6,8 +6,7 @@ Responsable: Sharon María Sánchez Céspedes
 
 | Carpeta o archivo | Descripción |
 |---|---|
-| `documentacion/Analisis_negocio_requerimientos_acta.docx` | Descripción de la organización, problema, justificación, usuarios de la información, acta constitutiva, objetivos, preguntas de negocio, indicadores K01 a K14, matriz de requerimientos, metodología Scrum y evidencias del levantamiento de requerimientos y de la carta de aceptación. |
-| `documentacion/Pagina1_Resumen_ejecutivo.docx` | Documentación de la página 1 del dashboard: objetos visuales, medidas propias, análisis, recomendaciones y limitaciones. |
+| `documentacion/Analisis_negocio_requerimientos_acta.docx` | Descripción de la organización, problema y justificación, acta constitutiva, objetivos, preguntas de negocio e indicadores, matriz de requerimientos, metodología de trabajo, documentación de la página 1 del dashboard y evidencias del levantamiento de requerimientos y de la carta de aceptación. |
 | `dashboard/medidas_pagina1.dax` | Expresiones DAX de las medidas K13 y K14, con sus valores de referencia. |
 
 ## Página 1 del dashboard: Resumen ejecutivo
