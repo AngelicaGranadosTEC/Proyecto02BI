@@ -1,0 +1,34 @@
+// =====================================================================
+// Página 1 - Resumen ejecutivo de solicitudes y admisiones
+// Medidas propias K13 y K14 (carpeta "Página 1 - Resumen ejecutivo")
+// Se calculan solo para la primera opción, la única con registros en
+// todos los años de 2020 a 2026. Ninguna medida relaciona registros
+// individuales entre solicitudes y admisiones.
+// =====================================================================
+
+// Tabla: fact_solicitudes | Formato: 0.0 %
+// Compara el último año seleccionado con el año anterior.
+// Queda en blanco si no existe año anterior con registros.
+K13 Variación interanual solicitudes primera opción =
+VAR AnioActual = MAX ( dim_tiempo[Año] )
+VAR Actual =
+    CALCULATE ( [K01 Solicitudes primera opcion], dim_tiempo[Año] = AnioActual )
+VAR Anterior =
+    CALCULATE ( [K01 Solicitudes primera opcion], dim_tiempo[Año] = AnioActual - 1 )
+RETURN
+    IF ( NOT ISBLANK ( Anterior ), DIVIDE ( Actual - Anterior, Anterior ) )
+
+// Tabla: fact_admisiones | Formato: 0.0 %
+K14 Variación interanual admisiones primera opción =
+VAR AnioActual = MAX ( dim_tiempo[Año] )
+VAR Actual =
+    CALCULATE ( [Admisiones primera opcion], dim_tiempo[Año] = AnioActual )
+VAR Anterior =
+    CALCULATE ( [Admisiones primera opcion], dim_tiempo[Año] = AnioActual - 1 )
+RETURN
+    IF ( NOT ISBLANK ( Anterior ), DIVIDE ( Actual - Anterior, Anterior ) )
+
+// Valores de referencia para verificar
+// Año 2026 (sin filtro): K13 = 6,8 %  | K14 = 22,7 %
+// Año 2025:              K13 = 20,8 % | K14 = -35,9 %
+// Año 2020:              en blanco, porque no hay año anterior
